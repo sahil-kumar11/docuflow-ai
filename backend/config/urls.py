@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.http import JsonResponse
 from core.google_oauth import google_login , google_callback
+from core.rbac_demo import RBACCheckView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -9,4 +10,5 @@ urlpatterns = [
     path("api/health/", lambda request: JsonResponse({"status": "ok"})),
     path("api/auth/google/login/", google_login, name="google_login"),
     path("api/auth/google/callback/", google_callback, name="google_callback"),
+    path("api/orgs/<uuid:org_id>/rbac-check/",RBACCheckView.as_view(),name="rbac-check",),
 ]

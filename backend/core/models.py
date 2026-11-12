@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.db import models
+from django.db.models import Q
 
 
 class GoogleAccount(models.Model):
@@ -15,3 +16,5 @@ class GoogleAccount(models.Model):
 
     def __str__(self):
         return str(self.user)
+
+
